@@ -1,6 +1,6 @@
 import torch.cuda
 
-from .config import Config
+from config import Config
 
 class TrainConfig(Config):
     if not torch.cuda.is_available():

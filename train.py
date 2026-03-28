@@ -18,13 +18,13 @@ def saveCkpt(model, optimizer, epochs, path):
 
 
 def train(model, trainDataLoader, valDataLoader, optimizer, criterion, config):
-    print("configuring model for gpu")
+    print(f"configuring model for {config.DEVICE_TYPE}")
     model = torch.nn.DataParallel(model)
     model = model.to(config.DEVICE_TYPE)
     print("\nStarting to train")
     trainingLoss = []
     valLoss = []
-    for e in config.TRAIN_EPOCHS:
+    for e in range(config.TRAIN_EPOCHS):
         model.train()
         runTrainLoss = 0
         runValLoss = 0
